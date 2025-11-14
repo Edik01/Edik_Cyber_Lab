@@ -40,7 +40,7 @@ def list_devices() -> Dict[str, Any]:
 async def start_scan(req: ScanRequest) -> Dict[str, Any]:
    
     try:
-        devices = await scan_subnet(req.cidr, aggressive=req.aggressive)
+        devices = await scan_subnet(req.cidr, aggressive=req.aggressive, max_hosts=req.max_hosts)
         global LAST_DEVICES
         LAST_DEVICES = devices
         return {"devices": devices}
